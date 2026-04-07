@@ -14,6 +14,17 @@ config/name="Equipe 6 LADJ"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://bsx8wph5k3hv"
+
+[layer_names]
+
+2d_physics/layer_1="protagonista"
+2d_physics/layer_2="mapa"
+2d_physics/layer_3="inimigos"
+2d_physics/layer_4="utilitarios"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

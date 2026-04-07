@@ -4,12 +4,23 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+signal inimigos 
 
+var vida := 2
+#var morreu: bool = false
+
+func combate():
+	vida-=1
+	if vida == 0:
+		get_tree().change_scene_to_file("res://game_over.tscn")
+		queue_free()
+
+func _ready() -> void:
+	inimigos.connect(combate)
+	
 func _physics_process(delta: float) -> void:
 
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction_x := Input.get_axis("ui_left", "ui_right")
 	var direction_y := Input.get_axis("ui_up", "ui_down")
 	
