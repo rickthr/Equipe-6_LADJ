@@ -8,7 +8,7 @@ signal tomar_dano
 
 
 
-var vida := 10
+var vida := 1
 
 
 func deu_dano():
@@ -56,5 +56,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hitbox_atack_body_entered(body: Node2D) -> void:
+	if Input.is_action_just_pressed("atack"):
 		body.emit_signal("dano")
 		print("funcionou")
