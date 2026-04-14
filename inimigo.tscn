@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bh1gpy42q1nri" path="res://icon.svg" id="2_g45jm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enrbn"]
-size = Vector2(13, 9)
+size = Vector2(20, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0b8xr"]
 size = Vector2(18, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g45jm"]
 
 [node name="inimigo" type="Node2D" unique_id=1343840007]
 
@@ -22,7 +24,7 @@ scale = Vector2(0.14062499, 0.11328126)
 texture = ExtResource("2_g45jm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pers_inimigo" unique_id=1041720178]
-position = Vector2(-0.5, 0.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_enrbn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pers_inimigo" unique_id=2104654370]
@@ -33,7 +35,13 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pers_inimigo/hurtbox" unique_id=1877689896]
-position = Vector2(-20, -9.5)
+position = Vector2(-20, -10)
 shape = SubResource("RectangleShape2D_0b8xr")
 
+[node name="Area2D" type="Area2D" parent="pers_inimigo" unique_id=933495215]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pers_inimigo/Area2D" unique_id=2062988183]
+shape = SubResource("RectangleShape2D_g45jm")
+
 [connection signal="body_entered" from="pers_inimigo/hurtbox" to="pers_inimigo" method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="pers_inimigo/Area2D" to="pers_inimigo" method="_on_area_2d_body_entered"]

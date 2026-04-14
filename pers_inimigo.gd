@@ -17,7 +17,10 @@ func _ready() -> void:
 		dano.connect(tomou_dano)
 		add_to_group("inimigo")
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("jogador"):
-		body.emit_signal("tomar_dano")
+
 	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void: #FAZ O PROTAGONISTA TOMAR DANO
+	print("jogador devia tomar dano")
+	body.emit_signal("tomar_dano")
