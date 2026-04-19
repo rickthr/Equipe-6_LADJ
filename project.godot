@@ -11,12 +11,18 @@ config_version=5
 [application]
 
 config/name="Equipe 6 LADJ"
-config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+run/main_scene="uid://cogxbxsqwxk6q"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="res://assets/icon.svg"
 
 [autoload]
 
 Global="*uid://bsx8wph5k3hv"
+
+[global_group]
+
+Player="o jogador po"
+Enemy="Inimigos"
 
 [input]
 
