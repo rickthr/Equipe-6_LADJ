@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
+@onready var vision: Area2D = $vision
 
-const SPEED = 300.0
+@export var speed: int = 70
 
-var vida := 3
+
+func _on_vision_player_detected(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		print("detectou o player")

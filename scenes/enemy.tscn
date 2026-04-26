@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfnasxo7gbvd4"]
+[gd_scene load_steps=7 format=3 uid="uid://cfnasxo7gbvd4"]
 
 [ext_resource type="Script" uid="uid://dsh2p5w0pq7cc" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://dtkhx1ceayv0d" path="res://scripts/vision_enemy.gd" id="2_md0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7k104"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
-size = Vector2(20, 25.5)
+size = Vector2(20, 154)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 
@@ -24,12 +25,17 @@ modulate = Color(0.895212, 0, 0.13356447, 1)
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_7k104")
 
-[node name="visão" type="Area2D" parent="."]
+[node name="vision" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 4
+script = ExtResource("2_md0e3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="visão"]
-position = Vector2(0, 22.75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+position = Vector2(0, 67)
 shape = SubResource("RectangleShape2D_7p1mj")
-debug_color = Color(0, 0.6, 0.05490196, 0.41960785)
+debug_color = Color(0, 0.6340109, 0.43756983, 0.41960785)
+
+[node name="RayCast2D" type="RayCast2D" parent="vision"]
+target_position = Vector2(0, 144)
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
@@ -40,4 +46,9 @@ scale = Vector2(1.07, 1.07)
 shape = SubResource("RectangleShape2D_md0e3")
 debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
 
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hurtbox_area_entered"]
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="vision" to="vision" method="_on_body_entered"]
+[connection signal="body_exited" from="vision" to="vision" method="_on_body_exited"]
+[connection signal="player_detected" from="vision" to="." method="_on_vision_player_detected"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

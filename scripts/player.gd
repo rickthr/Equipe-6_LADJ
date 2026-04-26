@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
 var vida = 1
 
@@ -33,5 +32,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	print("entrou")
-	tomou_dano()
+	if body.is_in_group("Player"): #condicional para ter ctz que o player quem toma dano (o inimigo tava dando dano nas paredes)
+		print("dano")
+		tomou_dano()

@@ -23,6 +23,7 @@ Global="*uid://bsx8wph5k3hv"
 
 Player="o jogador po"
 Enemy="Inimigos"
+Wall="As Paredes do jogo"
 
 [input]
 
