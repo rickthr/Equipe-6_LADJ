@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://53upis1mnjlf" path="res://scripts/primeiro_cen.gd" id="1_ep247"]
 [ext_resource type="PackedScene" uid="uid://3ot2uk2utlme" path="res://scenes/player.tscn" id="2_5r4tm"]
 [ext_resource type="PackedScene" uid="uid://cfnasxo7gbvd4" path="res://scenes/enemy.tscn" id="3_2bhmo"]
-[ext_resource type="Script" uid="uid://b08swyrkdundh" path="res://scripts/path_follow_enemy.gd" id="3_5r4tm"]
+[ext_resource type="Script" path="res://scripts/path_follow_enemy.gd" id="3_5r4tm"]
 
 [sub_resource type="Curve2D" id="Curve2D_ep247"]
 bake_interval = 0.01
@@ -20,7 +20,7 @@ size = Vector2(230, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnm2h"]
 size = Vector2(294, 18.000008)
 
-[node name="primeiro_cenario" type="Node2D"]
+[node name="debug_scene" type="Node2D"]
 script = ExtResource("1_ep247")
 
 [node name="Camera2D" type="Camera2D" parent="."]
