@@ -14,9 +14,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Equipe 6 LADJ (4.6)"
+config/name="Equipe 6 LADJ"
 run/main_scene="uid://cogxbxsqwxk6q"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
 [autoload]
@@ -27,6 +27,7 @@ Global="*uid://bsx8wph5k3hv"
 
 Player="o jogador po"
 Enemy="Inimigos"
+Wall="As Paredes do jogo"
 
 [input]
 

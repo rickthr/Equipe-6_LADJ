@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ifgkufucyqdt"
-path="res://.godot/imported/parede_superior.png-c758e4e9d9fe05130d89efa91cdf920f.ctex"
+path="res://.godot/imported/parede_superior.png-d0f00df552bf4515932996238375dcce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tileset/parede_superior.png"
-dest_files=["res://.godot/imported/parede_superior.png-c758e4e9d9fe05130d89efa91cdf920f.ctex"]
+source_file="res://assets/tilemap/parede_superior.png"
+dest_files=["res://.godot/imported/parede_superior.png-d0f00df552bf4515932996238375dcce.ctex"]
 
 [params]
 
