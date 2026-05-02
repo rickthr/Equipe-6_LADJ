@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://cogxbxsqwxk6q"]
+
+[ext_resource type="Script" uid="uid://53upis1mnjlf" path="res://scripts/primeiro_cen.gd" id="1_ep247"]
+[ext_resource type="PackedScene" uid="uid://3ot2uk2utlme" path="res://scenes/player.tscn" id="2_5r4tm"]
+[ext_resource type="PackedScene" uid="uid://cfnasxo7gbvd4" path="res://scenes/enemy.tscn" id="3_2bhmo"]
+[ext_resource type="Script" uid="uid://b08swyrkdundh" path="res://scripts/path_follow_enemy.gd" id="3_5r4tm"]
+
+[sub_resource type="Curve2D" id="Curve2D_ep247"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 55, 0, 0, 0, 0, 80, 55, 0, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rrki"]
+size = Vector2(230, 18)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3rrki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnm2h"]
+size = Vector2(294, 18.000008)
+
+[node name="debug_scene" type="Node2D" unique_id=396134632]
+script = ExtResource("1_ep247")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1407260272]
+position = Vector2(-1, 0)
+zoom = Vector2(1.985, 1.985)
+
+[node name="player" parent="." unique_id=1971399597 instance=ExtResource("2_5r4tm")]
+position = Vector2(-72, -11)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1465020797]
+position = Vector2(8, -7.0399113)
+rotation = 0.0004017353
+curve = SubResource("Curve2D_ep247")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=333886908]
+rotation = 1.5707964
+script = ExtResource("3_5r4tm")
+speed = 50.0
+
+[node name="Enemy" parent="Path2D/PathFollow2D" unique_id=715777972 instance=ExtResource("3_2bhmo")]
+position = Vector2(0.96008873, 0)
+rotation = -1.5703946
+
+[node name="vision" parent="Path2D/PathFollow2D/Enemy" index="2" unique_id=806743341]
+collision_mask = 3
+
+[node name="mapa" type="Node2D" parent="." unique_id=1071030721]
+
+[node name="parede" type="StaticBody2D" parent="mapa" unique_id=908620904 groups=["Wall"]]
+position = Vector2(0, -152)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mapa/parede" unique_id=142119149]
+shape = SubResource("RectangleShape2D_3rrki")
+
+[node name="Sprite2D" type="Sprite2D" parent="mapa/parede" unique_id=1206997043]
+position = Vector2(0, -1.5258789e-05)
+scale = Vector2(230, 18)
+texture = SubResource("CanvasTexture_3rrki")
+
+[node name="parede2" type="StaticBody2D" parent="mapa" unique_id=780073355 groups=["Wall"]]
+position = Vector2(274, -13)
+rotation = 1.5707964
+collision_layer = 2
+collision_mask = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="mapa/parede2" unique_id=1319065028]
+position = Vector2(-0.23960495, -0.5338135)
+scale = Vector2(294.38574, 18)
+texture = SubResource("CanvasTexture_3rrki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mapa/parede2" unique_id=84617898]
+shape = SubResource("RectangleShape2D_xnm2h")
+
+[node name="parede3" type="StaticBody2D" parent="mapa" unique_id=1888646752 groups=["Wall"]]
+position = Vector2(-31.999985, 16)
+rotation = 1.5707964
+scale = Vector2(0.2835484, -1.592518)
+collision_layer = 2
+collision_mask = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="mapa/parede3" unique_id=829688776]
+position = Vector2(-0.23960495, -0.5338135)
+scale = Vector2(294.38574, 18)
+texture = SubResource("CanvasTexture_3rrki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mapa/parede3" unique_id=526219006]
+shape = SubResource("RectangleShape2D_xnm2h")
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/Enemy/vision" to="Path2D/PathFollow2D" method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Path2D/PathFollow2D/Enemy/vision" to="Path2D/PathFollow2D" method="_on_vision_body_exited"]
+[connection signal="body_entered" from="Path2D/PathFollow2D/Enemy/Hitbox" to="player" method="_on_hitbox_body_entered"]
+
+[editable path="player"]
+[editable path="Path2D/PathFollow2D/Enemy"]

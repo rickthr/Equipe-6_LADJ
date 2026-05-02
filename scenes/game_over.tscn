@@ -1,29 +1,111 @@
-[gd_scene load_steps=2 format=3 uid="uid://5ybb8tjakiaa"]
+[gd_scene format=3 uid="uid://5ybb8tjakiaa"]
 
 [ext_resource type="Script" uid="uid://ch88381mq5hji" path="res://scripts/game_over.gd" id="1_xeevv"]
+[ext_resource type="Texture2D" uid="uid://fvir4ouuypk1" path="res://assets/game over/gameover-Sheet1.png" id="2_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://b3qiio4aj1vup" path="res://assets/game over/gameover-Sheet 2.png" id="3_racf3"]
+[ext_resource type="FontFile" uid="uid://pvlwulssamg0" path="res://assets/FONTE/Micro5-Regular.ttf" id="4_racf3"]
+[ext_resource type="AudioStream" uid="uid://b0uexm4hitsnt" path="res://sound/select.wav" id="5_7m3ot"]
 
-[node name="game_over" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m3ot"]
+atlas = ExtResource("2_tbwuq")
+region = Rect2(0, 0, 4800, 4320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3hpu"]
+atlas = ExtResource("2_tbwuq")
+region = Rect2(4800, 0, 4800, 4320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irg28"]
+atlas = ExtResource("2_tbwuq")
+region = Rect2(0, 4320, 4800, 4320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jtsn"]
+atlas = ExtResource("2_tbwuq")
+region = Rect2(4800, 4320, 4800, 4320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bugq"]
+atlas = ExtResource("3_racf3")
+region = Rect2(0, 0, 4800, 4320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wawo4"]
+atlas = ExtResource("3_racf3")
+region = Rect2(4800, 0, 4800, 4320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56v3a"]
+atlas = ExtResource("3_racf3")
+region = Rect2(0, 4320, 4800, 4320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o57t2"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7m3ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3hpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irg28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jtsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bugq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wawo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56v3a")
+}],
+"loop": false,
+"name": &"gameover",
+"speed": 5.0
+}]
+
+[node name="game_over" type="Node2D" unique_id=1774711752]
 script = ExtResource("1_xeevv")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="animacao_over" type="AnimatedSprite2D" parent="." unique_id=696863861]
+z_index = 1
+position = Vector2(557, 208.00002)
+scale = Vector2(0.09, 0.09)
+sprite_frames = SubResource("SpriteFrames_o57t2")
+animation = &"gameover"
+autoplay = "gameover"
+frame = 6
+frame_progress = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=287263210]
 offset_right = 1150.0
-offset_bottom = 602.0
+offset_bottom = 669.0
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 286.0
-offset_top = 212.0
-offset_right = 857.0
-offset_bottom = 304.0
-theme_override_font_sizes/font_size = 67
-text = "VOCÊ MORREU!!!!!"
-
-[node name="Button" type="Button" parent="."]
-offset_left = 332.0
-offset_top = 320.0
-offset_right = 798.0
-offset_bottom = 395.0
+[node name="Button" type="Button" parent="." unique_id=857485090]
+offset_left = 339.0
+offset_top = 366.0
+offset_right = 805.0
+offset_bottom = 441.0
+theme_override_fonts/font = ExtResource("4_racf3")
 theme_override_font_sizes/font_size = 48
 text = "TENTE NOVAMENTE"
 
+[node name="Button2" type="Button" parent="." unique_id=1211919306]
+offset_left = 341.0
+offset_top = 441.0
+offset_right = 807.0
+offset_bottom = 516.0
+theme_override_fonts/font = ExtResource("4_racf3")
+theme_override_font_sizes/font_size = 48
+text = "VOLTAR AO MENU"
+
+[node name="select" type="AudioStreamPlayer2D" parent="." unique_id=251295462]
+stream = ExtResource("5_7m3ot")
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

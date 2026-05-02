@@ -95,6 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wtq4b")
 }],
+<<<<<<< Updated upstream
 "loop": true,
 "name": &"de_lado",
 "speed": 5.0
@@ -103,6 +104,11 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+=======
+"loop": false,
+"name": &"Dead",
+"speed": 7.0
+>>>>>>> Stashed changes
 }, {
 "frames": [{
 "duration": 1.0,
@@ -154,6 +160,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
+size = Vector2(28, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
 size = Vector2(20, 25.5)
@@ -165,6 +172,7 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_7p1mj")
 
+<<<<<<< Updated upstream
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=918282624]
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_xwavj")
@@ -173,6 +181,16 @@ autoplay = "idle"
 frame_progress = 0.8708337
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=643447560]
+=======
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501219323]
+scale = Vector2(0.03, 0.03)
+sprite_frames = SubResource("SpriteFrames_nenq2")
+animation = &"Dead"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=679873493]
+position = Vector2(-1, 0)
+>>>>>>> Stashed changes
 shape = SubResource("RectangleShape2D_7xaro")
 
 [node name="visão" type="Area2D" parent="." unique_id=155878760]
