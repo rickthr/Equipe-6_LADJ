@@ -14,3 +14,5 @@ size = Vector2(62, 49)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="morte" unique_id=1051280320]
 position = Vector2(113, 24)
 shape = SubResource("RectangleShape2D_5qyen")
+
+[connection signal="body_entered" from="morte" to="player" method="_on_morte_body_entered"]

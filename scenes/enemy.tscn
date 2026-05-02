@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cfnasxo7gbvd4"]
+[gd_scene format=3 uid="uid://cfnasxo7gbvd4"]
 
 [ext_resource type="Script" uid="uid://dsh2p5w0pq7cc" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://c5jr8a3kwggqa" path="res://assets/Inimigo shits/shits/OLHO IDLE-Sheet.png" id="2_4ra3w"]
@@ -239,7 +239,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1f82d")
 }],
-"loop": true,
+"loop": false,
 "name": &"Ataque_baixo",
 "speed": 10.0
 }, {
@@ -271,7 +271,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x6q4o")
 }],
-"loop": true,
+"loop": false,
 "name": &"Ataque_lado",
 "speed": 10.0
 }, {
@@ -303,7 +303,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sdxul")
 }],
-"loop": true,
+"loop": false,
 "name": &"Ataque_up",
 "speed": 10.0
 }, {
@@ -332,7 +332,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j0cyh")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dead",
 "speed": 7.0
 }, {
@@ -391,48 +391,50 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
+size = Vector2(35, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
 size = Vector2(20, 154)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" unique_id=1291523917]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_7p1mj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=266343907]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_nenq2")
-animation = &"Ataque_up"
+animation = &"Dead"
 autoplay = "Idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1302325791]
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_7xaro")
 
-[node name="vision" type="Area2D" parent="." groups=["Enemy"]]
+[node name="vision" type="Area2D" parent="." unique_id=331215564 groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("2_md0e3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision" unique_id=891174363]
 position = Vector2(0, 67)
 shape = SubResource("RectangleShape2D_7p1mj")
 debug_color = Color(0, 0.6340109, 0.43756983, 0.41960785)
 
-[node name="RayCast2D" type="RayCast2D" parent="vision"]
+[node name="RayCast2D" type="RayCast2D" parent="vision" unique_id=1831470308]
 target_position = Vector2(0, 144)
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=228959738]
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=730149489]
 scale = Vector2(1.07, 1.07)
 shape = SubResource("RectangleShape2D_md0e3")
 debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=2078706676]
 
 [connection signal="body_entered" from="vision" to="vision" method="_on_body_entered"]
 [connection signal="body_exited" from="vision" to="vision" method="_on_body_exited"]

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dmobvfu4c41g6"]
+
+[ext_resource type="Script" uid="uid://n4gqp3ngqikq" path="res://scenes/chave.gd" id="1_4lytf"]
+[ext_resource type="Texture2D" uid="uid://p7mwyqye6v12" path="res://assets/Tileset/lamparinaparede.png" id="1_6s0vc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lytf"]
+size = Vector2(84, 86)
+
+[node name="chave" type="Node2D" unique_id=1535026472]
+script = ExtResource("1_4lytf")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=905435216]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=348114707]
+position = Vector2(32, 33)
+shape = SubResource("RectangleShape2D_4lytf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=509467682]
+position = Vector2(33, 29)
+scale = Vector2(0.08140628, 0.09111111)
+texture = ExtResource("1_6s0vc")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
