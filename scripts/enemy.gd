@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var vision: Area2D = $vision
 
-@export var speed: int = 70
+@export var speed: int = 30
 
 
 func _on_vision_player_detected(body: Node2D) -> void:

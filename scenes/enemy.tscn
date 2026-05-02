@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cfnasxo7gbvd4"]
+[gd_scene load_steps=63 format=3 uid="uid://cfnasxo7gbvd4"]
 
 [ext_resource type="Script" uid="uid://dsh2p5w0pq7cc" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://c5jr8a3kwggqa" path="res://assets/Inimigo shits/shits/OLHO IDLE-Sheet.png" id="2_4ra3w"]
@@ -397,42 +397,42 @@ size = Vector2(20, 154)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1823387285]
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_7p1mj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501219323]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_nenq2")
 animation = &"Ataque_up"
 autoplay = "Idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=679873493]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7xaro")
 
-[node name="vision" type="Area2D" parent="." unique_id=806743341 groups=["Enemy"]]
+[node name="vision" type="Area2D" parent="." groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("2_md0e3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vision" unique_id=643694806]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
 position = Vector2(0, 67)
 shape = SubResource("RectangleShape2D_7p1mj")
 debug_color = Color(0, 0.6340109, 0.43756983, 0.41960785)
 
-[node name="RayCast2D" type="RayCast2D" parent="vision" unique_id=1048049075]
+[node name="RayCast2D" type="RayCast2D" parent="vision"]
 target_position = Vector2(0, 144)
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1791454415]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1265972578]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 scale = Vector2(1.07, 1.07)
 shape = SubResource("RectangleShape2D_md0e3")
 debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
 
-[node name="Timer" type="Timer" parent="." unique_id=72732243]
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="vision" to="vision" method="_on_body_entered"]
 [connection signal="body_exited" from="vision" to="vision" method="_on_body_exited"]

@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://cogxbxsqwxk6q"]
+[gd_scene load_steps=9 format=3 uid="uid://cogxbxsqwxk6q"]
 
 [ext_resource type="Script" uid="uid://53upis1mnjlf" path="res://scripts/primeiro_cen.gd" id="1_ep247"]
 [ext_resource type="PackedScene" uid="uid://3ot2uk2utlme" path="res://scenes/player.tscn" id="2_5r4tm"]
 [ext_resource type="PackedScene" uid="uid://cfnasxo7gbvd4" path="res://scenes/enemy.tscn" id="3_2bhmo"]
-[ext_resource type="Script" path="res://scripts/path_follow_enemy.gd" id="3_5r4tm"]
+[ext_resource type="Script" uid="uid://b08swyrkdundh" path="res://scripts/path_follow_enemy.gd" id="3_5r4tm"]
 
 [sub_resource type="Curve2D" id="Curve2D_ep247"]
 bake_interval = 0.01
@@ -45,6 +45,9 @@ position = Vector2(0.96008873, 0)
 rotation = -1.5703946
 
 [node name="vision" parent="Path2D/PathFollow2D/Enemy" index="2"]
+collision_mask = 3
+
+[node name="RayCast2D" parent="Path2D/PathFollow2D/Enemy/vision" index="1"]
 collision_mask = 3
 
 [node name="mapa" type="Node2D" parent="."]
@@ -93,6 +96,7 @@ shape = SubResource("RectangleShape2D_xnm2h")
 
 [connection signal="body_entered" from="Path2D/PathFollow2D/Enemy/vision" to="Path2D/PathFollow2D" method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Path2D/PathFollow2D/Enemy/vision" to="Path2D/PathFollow2D" method="_on_vision_body_exited"]
+[connection signal="player_detected" from="Path2D/PathFollow2D/Enemy/vision" to="Path2D/PathFollow2D" method="_on_vision_player_detected"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Enemy/Hitbox" to="player" method="_on_hitbox_body_entered"]
 
 [editable path="player"]

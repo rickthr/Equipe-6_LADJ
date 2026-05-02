@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://3ot2uk2utlme"]
+[gd_scene load_steps=75 format=3 uid="uid://3ot2uk2utlme"]
 
 [ext_resource type="Script" uid="uid://b08dkpcg618h" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://lb1350dmxrlp" path="res://assets/Ninja Shit/NinjinATAQUEbaixo1-Sheet.png" id="2_d2wvv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cykxlt60qmvy4" path="res://assets/Ninja Shit/NinjinUP-Sheet.png" id="6_y4r1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(15, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dvfe"]
 atlas = ExtResource("2_d2wvv")
@@ -489,14 +490,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="CharacterBody2D" unique_id=2146880530 groups=["Player"]]
+[node name="player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 6
 script = ExtResource("1_4flbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=706904815]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 1)
 shape = SubResource("RectangleShape2D_i3pqv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1496773953]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_2dvfe")
 animation = &"Ataque_down"

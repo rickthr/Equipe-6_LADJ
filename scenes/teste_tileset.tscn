@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://b6iyefyokkyjl"]
+[gd_scene load_steps=0 format=4 uid="uid://b6iyefyokkyjl"]
 
 [ext_resource type="Texture2D" uid="uid://c423onu0f5yvg" path="res://assets/Tileset/parede_improviso.png" id="1_ree8o"]
 [ext_resource type="Texture2D" uid="uid://db41i0w0we8iy" path="res://assets/Tileset/primeiro_chao.png" id="2_g6apo"]
