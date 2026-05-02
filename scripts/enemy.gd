@@ -1,21 +1,19 @@
 extends CharacterBody2D
 
-<<<<<<< Updated upstream
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
-func _physics_process(delta: float) -> void:
-	animated_sprite_2d.play("idle")
-const SPEED = 300.0
-
-var vida := 3
-=======
 @onready var vision: Area2D = $vision
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var speed: int = 70
 signal inimigo_morrer
 
+const SPEED = 300.0
+
 var vida = 1
+
+func _physics_process(delta: float) -> void:
+	animated_sprite_2d.play("idle")
+
+
 func morrer():
 	vida -= 1
 	print(vida)
@@ -32,4 +30,3 @@ func _ready() -> void:
 	add_to_group("Inimigo")
 	inimigo_morrer.connect(morrer)
 	
->>>>>>> Stashed changes

@@ -3,16 +3,12 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
-<<<<<<< Updated upstream
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-var vida = 10
-=======
 
 var atacando : bool = false
 var vida = 1
->>>>>>> Stashed changes
 
 func tomou_dano() -> void:
 	vida -= 1
@@ -65,9 +61,6 @@ func _physics_process(delta: float) -> void:
 	elif direction_x !=0:
 		animated_sprite_2d.play("de_lado")
 	else:
-<<<<<<< Updated upstream
-		animated_sprite_2d.play("idle")
-=======
 		animated_sprite_2d.play("Idle")
 		
 		
@@ -118,15 +111,13 @@ func _physics_process(delta: float) -> void:
 		set_physics_process(true)
 		atacando = false
 	
->>>>>>> Stashed changes
+
 	move_and_slide()
 
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-<<<<<<< Updated upstream
 	print("entrou")
-=======
 	if body.is_in_group("Player"): #condicional para ter ctz que o player quem toma dano (o inimigo tava dando dano nas paredes)
 		print("dano")
 		tomou_dano()
@@ -142,5 +133,4 @@ func _on_portal_body_entered(body: Node2D) -> void:
 
 
 func _on_morte_body_entered(body: Node2D) -> void:
->>>>>>> Stashed changes
 	tomou_dano()
