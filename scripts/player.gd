@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-const SPEED = 300.0
+const SPEED = 100.0
 
-var vida = 1
+var vida = 10
 
 func tomou_dano() -> void:
 	vida -= 1
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		
 	if direction_y > 0:
 		animated_sprite_2d.play("Down")
-	elif direction_y<0:
+	elif direction_y < 0:
 		animated_sprite_2d.play("Up")
 	elif direction_x !=0:
 		animated_sprite_2d.play("De_lado")

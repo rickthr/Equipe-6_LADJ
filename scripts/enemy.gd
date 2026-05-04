@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 signal inimigo_morrer
 
-var vida = 1
+var vida = 3
 
 func _physics_process(delta: float) -> void:
 	animated_sprite_2d.play("idle")
