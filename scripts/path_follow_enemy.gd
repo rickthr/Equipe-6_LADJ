@@ -1,15 +1,28 @@
 extends PathFollow2D
 
 @export var speed: float = 30
-
 @export var state = "patrol"
 
-var bodies_detected = []
+@onready var enemy =$Enemy
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var bodies_detected = []
+var points = []
+
+const TIME_BETWEEN_POINTS = 1
+
+
 func _process(delta: float) -> void:
 	if state == "patrol":
-		progress += delta * speed 
+		progress += delta * speed
+
+func _ready() -> void:
+	var curve = $"..".curve
+	
+	for i in range(curve.point_count):
+		points.append(curve.get_point_position(i))
+	
+
+
 
 
 func _on_vision_player_detected(body: Node2D, detected: bool) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cfnasxo7gbvd4"]
+[gd_scene load_steps=62 format=3 uid="uid://cfnasxo7gbvd4"]
 
 [ext_resource type="Script" uid="uid://dsh2p5w0pq7cc" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://c5jr8a3kwggqa" path="res://assets/Inimigo shits/shits/OLHO IDLE-Sheet.png" id="2_4ra3w"]
@@ -392,10 +392,8 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
-size = Vector2(20, 154)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(20, 10)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -412,22 +410,23 @@ autoplay = "Idle"
 shape = SubResource("RectangleShape2D_7xaro")
 
 [node name="vision" type="Area2D" parent="." groups=["Enemy"]]
-collision_layer = 4
+collision_layer = 16
+collision_mask = 3
 script = ExtResource("2_md0e3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
-position = Vector2(0, 67)
-shape = SubResource("RectangleShape2D_7p1mj")
-debug_color = Color(0, 0.6340109, 0.43756983, 0.41960785)
-
 [node name="RayCast2D" type="RayCast2D" parent="vision"]
-target_position = Vector2(0, 144)
+target_position = Vector2(0, 74)
+collision_mask = 3
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision"]
+polygon = PackedVector2Array(0, 0, -48, 48, -34, 64, -17, 72, 0, 75, 17, 72, 34, 64, 48, 48)
+
+[node name="Enemy_hitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_hitbox"]
+position = Vector2(0, 18.65)
 scale = Vector2(1.07, 1.07)
 shape = SubResource("RectangleShape2D_md0e3")
 debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
