@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://ch82ifh46ucgi"]
+
+[ext_resource type="Script" uid="uid://c6tkjgnxo3r1d" path="res://scripts/menu_de_inicio.gd" id="1_knvo6"]
+[ext_resource type="FontFile" uid="uid://pvlwulssamg0" path="res://assets/FONTE/Micro5-Regular.ttf" id="2_dommb"]
+[ext_resource type="AudioStream" uid="uid://23py0n071lu2" path="res://sound/inicio.mp3" id="3_kdnwc"]
+[ext_resource type="AudioStream" uid="uid://b0uexm4hitsnt" path="res://sound/select.wav" id="4_vtkaq"]
+
+[node name="Menu de inicio" type="Node2D" unique_id=1096501064]
+script = ExtResource("1_knvo6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1138784867]
+offset_right = 1156.0
+offset_bottom = 647.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1110440167]
+offset_left = 438.0
+offset_top = 80.0
+offset_right = 708.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 44
+text = "Logo do jogo"
+
+[node name="Button" type="Button" parent="." unique_id=574724591]
+offset_left = 447.0
+offset_top = 246.0
+offset_right = 713.0
+offset_bottom = 345.0
+theme_override_fonts/font = ExtResource("2_dommb")
+theme_override_font_sizes/font_size = 70
+text = "JOGAR"
+
+[node name="Button2" type="Button" parent="." unique_id=1379924863]
+offset_left = 401.0
+offset_top = 337.0
+offset_right = 783.0
+offset_bottom = 436.0
+theme_override_fonts/font = ExtResource("2_dommb")
+theme_override_font_sizes/font_size = 70
+text = "CONFIGURAÇÕES"
+
+[node name="Button3" type="Button" parent="." unique_id=585931678]
+offset_left = 456.0
+offset_top = 442.0
+offset_right = 722.0
+offset_bottom = 541.0
+theme_override_fonts/font = ExtResource("2_dommb")
+theme_override_font_sizes/font_size = 70
+text = "SAIR"
+
+[node name="inicio" type="AudioStreamPlayer2D" parent="." unique_id=100512942]
+stream = ExtResource("3_kdnwc")
+autoplay = true
+bus = &"music"
+parameters/looping = true
+
+[node name="select" type="AudioStreamPlayer2D" parent="." unique_id=809480096]
+stream = ExtResource("4_vtkaq")
+bus = &"efeitos sonoros"
+
+[connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
+[connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="focus_entered" from="Button2" to="." method="_on_button_2_focus_entered"]
+[connection signal="focus_exited" from="Button2" to="." method="_on_button_2_focus_exited"]
+[connection signal="mouse_entered" from="Button2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="Button2" to="." method="_on_button_2_mouse_exited"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="focus_entered" from="Button3" to="." method="_on_button_3_focus_entered"]
+[connection signal="focus_exited" from="Button3" to="." method="_on_button_3_focus_exited"]
+[connection signal="mouse_entered" from="Button3" to="." method="_on_button_3_mouse_entered"]
+[connection signal="mouse_exited" from="Button3" to="." method="_on_button_3_mouse_exited"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

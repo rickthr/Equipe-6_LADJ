@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmobvfu4c41g6"]
 
-[ext_resource type="Script" uid="uid://n4gqp3ngqikq" path="res://scenes/chave.gd" id="1_4lytf"]
+[ext_resource type="Script" uid="uid://n4gqp3ngqikq" path="res://scripts/chave.gd" id="1_4lytf"]
 [ext_resource type="Texture2D" uid="uid://p7mwyqye6v12" path="res://assets/Tileset/lamparinaparede.png" id="1_6s0vc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lytf"]

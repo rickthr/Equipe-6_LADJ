@@ -4,11 +4,14 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
-var vida = 1
+var vida = 2
 
 func tomou_dano() -> void:
 	vida -= 1
-	print(vida)
+	$hit.play()
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"modulate", Color.RED,0.5)
+	tween.tween_property(self,"modulate", Color.WHITE,0.5)
 	if vida == 0:
 		animated_sprite_2d.play("Dead")
 		set_physics_process(false)

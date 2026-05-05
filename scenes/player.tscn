@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://byqs0wxi6ex36" path="res://assets/Ninja Shit/ATAQUEUPNinjin2-Sheet.png" id="6_oprun"]
 [ext_resource type="Texture2D" uid="uid://cykxlt60qmvy4" path="res://assets/Ninja Shit/NinjinUP-Sheet.png" id="6_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://dubqvrmcn6cnu" path="res://sound/katana.mp3" id="12_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://bgje312t8x00r" path="res://sound/hit_player.wav" id="13_jej6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(15, 22)
@@ -489,6 +490,11 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle_lado",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2wvv"]
@@ -514,10 +520,8 @@ shape = SubResource("RectangleShape2D_i3pqv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1412988782]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_2dvfe")
-animation = &"Ataque_down"
+animation = &"idle_lado"
 autoplay = "Idle"
-frame = 10
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2071368967]
 zoom = Vector2(2.5, 2.5)
@@ -557,3 +561,8 @@ debug_color = Color(0.99400204, 0, 0.23606637, 0.41960785)
 
 [node name="katana" type="AudioStreamPlayer2D" parent="." unique_id=1992773679]
 stream = ExtResource("12_3v2ag")
+bus = &"efeitos sonoros"
+
+[node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=1552715313]
+stream = ExtResource("13_jej6c")
+bus = &"efeitos sonoros"

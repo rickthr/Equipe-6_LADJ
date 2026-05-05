@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://5ybb8tjakiaa"]
 
-[ext_resource type="Script" uid="uid://bu35khi66vw30" path="res://scenes/game_over.gd" id="1_7m3ot"]
+[ext_resource type="Script" uid="uid://bu35khi66vw30" path="res://game_over.gd" id="1_7m3ot"]
 [ext_resource type="Texture2D" uid="uid://fvir4ouuypk1" path="res://assets/game over/gameover-Sheet1.png" id="1_tbwuq"]
 [ext_resource type="Texture2D" uid="uid://b3qiio4aj1vup" path="res://assets/game over/gameover-Sheet 2.png" id="2_racf3"]
 [ext_resource type="FontFile" uid="uid://pvlwulssamg0" path="res://assets/FONTE/Micro5-Regular.ttf" id="3_7m3ot"]
 [ext_resource type="AudioStream" uid="uid://b0uexm4hitsnt" path="res://sound/select.wav" id="5_v3hpu"]
+[ext_resource type="AudioStream" uid="uid://ciua5g13t671i" path="res://sound/game_over.mp3" id="6_v3hpu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3hpu"]
 atlas = ExtResource("1_tbwuq")
@@ -90,6 +91,10 @@ offset_left = 440.0
 offset_top = 394.0
 offset_right = 771.0
 offset_bottom = 468.0
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath("../Button2")
+focus_next = NodePath("../Button2")
+focus_previous = NodePath(".")
 theme_override_fonts/font = ExtResource("3_7m3ot")
 theme_override_font_sizes/font_size = 36
 text = "Tente novamente"
@@ -105,6 +110,21 @@ text = "Voltar ao menu"
 
 [node name="select" type="AudioStreamPlayer2D" parent="." unique_id=586902458]
 stream = ExtResource("5_v3hpu")
+bus = &"efeitos sonoros"
 
+[node name="game_over" type="AudioStreamPlayer2D" parent="." unique_id=1359945123]
+stream = ExtResource("6_v3hpu")
+autoplay = true
+bus = &"music"
+parameters/looping = true
+
+[connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
+[connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="focus_entered" from="Button2" to="." method="_on_button_2_focus_entered"]
+[connection signal="focus_exited" from="Button2" to="." method="_on_button_2_focus_exited"]
+[connection signal="mouse_entered" from="Button2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="Button2" to="." method="_on_button_2_mouse_exited"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

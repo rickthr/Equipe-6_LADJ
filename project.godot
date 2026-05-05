@@ -15,8 +15,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Equipe 6 LADJ (Backup 3)"
-run/main_scene="uid://cogxbxsqwxk6q"
+run/main_scene="uid://ch82ifh46ucgi"
 config/features=PackedStringArray("4.6", "Forward Plus")
+
+[audio]
+
+buses/default_bus_layout="uid://c88fkpji1248r"
 
 [autoload]
 
