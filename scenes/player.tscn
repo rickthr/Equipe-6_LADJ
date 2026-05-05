@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dubqvrmcn6cnu" path="res://sound/katana.mp3" id="12_3v2ag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
-size = Vector2(15, 22)
+size = Vector2(15, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dvfe"]
 atlas = ExtResource("2_d2wvv")
@@ -492,10 +492,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2wvv"]
-size = Vector2(20, 13)
+size = Vector2(32, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3v2ag"]
-size = Vector2(27, 14)
+size = Vector2(32, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jej6c"]
 size = Vector2(20, 23)
@@ -508,7 +508,7 @@ collision_mask = 6
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 1)
+position = Vector2(-1.5, 2)
 shape = SubResource("RectangleShape2D_i3pqv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -521,16 +521,16 @@ frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
-limit_left = 0
-limit_top = 0
-limit_right = 1088
-limit_bottom = 648
+limit_left = -518
+limit_top = -354
+limit_right = 570
+limit_bottom = 294
 
 [node name="Dar_dano_cima" type="Area2D" parent="."]
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dar_dano_cima"]
-position = Vector2(-2, -13)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_d2wvv")
 debug_color = Color(0.71450216, 0.2584428, 1, 0.41960785)
 
@@ -538,7 +538,7 @@ debug_color = Color(0.71450216, 0.2584428, 1, 0.41960785)
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dar_dano_down"]
-position = Vector2(-0.5, 17)
+position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_3v2ag")
 debug_color = Color(0.6025803, 0.5427714, 0, 0.41960785)
 

@@ -403,7 +403,7 @@ script = ExtResource("1_7p1mj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_nenq2")
-animation = &"Dead"
+animation = &"Down"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -429,9 +429,12 @@ scale = Vector2(1.07, 1.07)
 shape = SubResource("RectangleShape2D_md0e3")
 debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="nav_timer" type="Timer" parent="."]
+
+[node name="nav_agent" type="NavigationAgent2D" parent="."]
+debug_enabled = true
 
 [connection signal="body_entered" from="vision" to="vision" method="_on_body_entered"]
 [connection signal="body_exited" from="vision" to="vision" method="_on_body_exited"]
 [connection signal="player_detected" from="vision" to="." method="_on_vision_player_detected"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="nav_timer" to="." method="_on_nav_timer_timeout"]
