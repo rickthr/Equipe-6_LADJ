@@ -75,9 +75,12 @@ atack={
 [layer_names]
 
 2d_physics/layer_1="protagonista"
+2d_navigation/layer_1="Chão"
 2d_physics/layer_2="mapa"
+2d_navigation/layer_2="Obstaculos"
 2d_physics/layer_3="inimigos"
 2d_physics/layer_4="utilitarios"
+avoidance/layer_2="Paredes"
 
 [physics]
 

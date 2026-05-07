@@ -3,8 +3,8 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent: NavigationAgent2D = $nav_agent
 
-@export var speed: int = 30
-@export var target: Node2D = null
+@export var speed: int = 60
+var target: Node2D = null
 var vida = 3
 var is_Following = false
 var return_target: Vector2 = Vector2.ZERO
@@ -32,47 +32,38 @@ func _physics_process(delta: float) -> void:
 		var direction = to_local(nav_agent.get_next_path_position()).normalized()
 		velocity = direction * speed
 		move_and_slide()
+	
 	elif path_follow != null and path_follow.state == "returning":
 		nav_agent.target_position = return_target
 		
 		if nav_agent.is_navigation_finished():
 			velocity = Vector2.ZERO
-			position = Vector2.ZERO  
+			position = Vector2.ZERO
+			await get_tree().process_frame
 			path_follow.retomar_patrol()
+			return
 		
 		var direction = to_local(nav_agent.get_next_path_position()).normalized()
 		velocity = direction * speed
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
-		position = Vector2.ZERO 
+		position = Vector2.ZERO
 
 
 func _on_vision_player_detected(body: Node2D) -> void:
-		print("detectou o player")
 		target = body          
 		is_Following = true
+		$detection_area.was_detected = true
 
-func _on_vision_player_lost() -> void:
-		start_returning()
+func _on_detection_area_player_lost() -> void:
+		is_Following = false
 		target = null
 		return_target = path_follow.global_position
-
-func start_following():
-	if is_Following:
-		return
-	is_Following = true
-	var global_pos = global_position
-	reparent(get_tree().current_scene)
-	global_position = global_pos
-
-func start_returning():
-	is_Following = false
-	target = null
-	await get_tree().create_timer(3.0).timeout
-	if not is_Following:
-		var global_pos = global_position
-		global_position = global_pos
+		if path_follow != null:
+			return_target = path_follow.global_position
+			print("return_target: ", return_target)
+			print("progress atual: ", path_follow.progress)
 
 func morrer():
 	vida -= 1
