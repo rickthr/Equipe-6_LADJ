@@ -49,14 +49,24 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
+	var aguarda_diretion = "down"
+	
 	if direction_y > 0:
+		aguarda_diretion = "down"
 		animated_sprite_2d.play("Down")
 	elif direction_y<0:
+		aguarda_diretion = "up"
 		animated_sprite_2d.play("Up")
 	elif direction_x !=0:
+		aguarda_diretion = "lado"
 		animated_sprite_2d.play("De_lado")
 	else:
-		animated_sprite_2d.play("Idle")
+		if aguarda_diretion == "up":
+			animated_sprite_2d.play("idle_up")
+		elif aguarda_diretion == "lado":
+			animated_sprite_2d.play("idle_lado")
+		else:
+			animated_sprite_2d.play("Idle")
 	
 	if Input.is_action_just_pressed("atack") and direction_y < 0:
 		animated_sprite_2d.play("Ataque_up")
