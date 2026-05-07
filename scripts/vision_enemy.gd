@@ -1,27 +1,42 @@
+# vision.gd (Area2D)
 extends Area2D
-@onready var raycast = $RayCast2D
-@onready var default_target_position: Vector2 = raycast.target_position
 
-signal player_detected(body: Node2D, detected: bool)
+@onready var raycast: RayCast2D = $RayCast2D
 
-func _is_detected(player):
-	raycast.target_position = raycast.to_local(player.global_position)
-	raycast.force_raycast_update()
-	
-	var collider = raycast.get_collider()
-	
-	if collider and collider.is_in_group("Player"):
-		return true
-	return false
+signal player_detected(body: Node2D)
+signal player_lost()
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and _is_detected(body) == true:
-		player_detected.emit(body, true)
-		
+var tracked_body: Node2D = null
+var is_player_visible: bool = false
 
-func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		raycast.target_position = default_target_position
+func _physics_process(delta: float) -> void:
+	# Pega todos os corpos dentro da área
+	var bodies = get_overlapping_bodies()
+	var player_in_area: Node2D = null
+
+	for body in bodies:
+		if body.is_in_group("Player"):
+			player_in_area = body
+			break
+
+	if player_in_area:
+		# Checa linha de visão com raycast
+		raycast.target_position = raycast.to_local(player_in_area.global_position)
 		raycast.force_raycast_update()
-		
-		player_detected.emit(body, false)
+
+		var collider = raycast.get_collider()
+		if collider and collider.is_in_group("Player"):
+			if not is_player_visible:
+				is_player_visible = true
+				tracked_body = player_in_area
+				player_detected.emit(tracked_body)  # ← sinal mais simples
+		else:
+			_lose_player()
+	else:
+		_lose_player()
+
+func _lose_player():
+	if is_player_visible:
+		is_player_visible = false
+		tracked_body = null
+		player_lost.emit()

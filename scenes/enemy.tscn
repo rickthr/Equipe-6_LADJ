@@ -434,7 +434,5 @@ debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
 [node name="nav_agent" type="NavigationAgent2D" parent="."]
 debug_enabled = true
 
-[connection signal="body_entered" from="vision" to="vision" method="_on_body_entered"]
-[connection signal="body_exited" from="vision" to="vision" method="_on_body_exited"]
 [connection signal="player_detected" from="vision" to="." method="_on_vision_player_detected"]
 [connection signal="timeout" from="nav_timer" to="." method="_on_nav_timer_timeout"]

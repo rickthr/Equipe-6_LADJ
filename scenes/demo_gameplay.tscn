@@ -1244,10 +1244,15 @@ curve = SubResource("Curve2D_db381")
 position = Vector2(96.666664, 0)
 script = ExtResource("5_db381")
 
-[node name="Enemy" parent="Cenário/Path2D/PathFollow2D" node_paths=PackedStringArray("target") instance=ExtResource("5_87qq5")]
+[node name="Enemy" parent="Cenário/Path2D/PathFollow2D" instance=ExtResource("5_87qq5")]
 rotation = -1.5707964
-target = NodePath("../../../../player")
 
 [node name="player" parent="." instance=ExtResource("5_0y56r")]
 position = Vector2(6.999999, 0)
 scale = Vector2(0.6, 0.6)
+
+[connection signal="player_detected" from="Cenário/Path2D/PathFollow2D/Enemy/vision" to="Cenário/Path2D/PathFollow2D" method="_on_vision_player_detected"]
+[connection signal="player_lost" from="Cenário/Path2D/PathFollow2D/Enemy/vision" to="Cenário/Path2D/PathFollow2D" method="_on_vision_player_lost"]
+[connection signal="player_lost" from="Cenário/Path2D/PathFollow2D/Enemy/vision" to="Cenário/Path2D/PathFollow2D/Enemy" method="_on_vision_player_lost"]
+
+[editable path="Cenário/Path2D/PathFollow2D/Enemy"]
