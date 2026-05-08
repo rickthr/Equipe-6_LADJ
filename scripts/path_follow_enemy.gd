@@ -19,3 +19,4 @@ func _iniciar_retorno():
 
 func retomar_patrol():
 	state = "patrol"
+	print("voltou a patrol")

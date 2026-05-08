@@ -29,7 +29,8 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 			return
 		
-		var direction = to_local(nav_agent.get_next_path_position()).normalized()
+		var next_pos = nav_agent.get_next_path_position()
+		var direction = (next_pos - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
 	
@@ -42,8 +43,8 @@ func _physics_process(delta: float) -> void:
 			await get_tree().process_frame
 			path_follow.retomar_patrol()
 			return
-		
-		var direction = to_local(nav_agent.get_next_path_position()).normalized()
+		var next_pos = nav_agent.get_next_path_position()
+		var direction = (next_pos - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
 	else:
@@ -52,9 +53,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_vision_player_detected(body: Node2D) -> void:
-		target = body          
-		is_Following = true
-		$detection_area.was_detected = true
+	if path_follow != null and path_follow.state == "returning":
+		path_follow.state = "following"
+		position = Vector2.ZERO
+	target = body          
+	is_Following = true
+	$detection_area.was_detected = true
 
 func _on_detection_area_player_lost() -> void:
 		is_Following = false
