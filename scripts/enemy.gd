@@ -169,6 +169,9 @@ func attack():
 func morrer():
 	vida -= 1
 	print(vida)
+	if path_follow != null and path_follow.state == "patrol":
+		vida = 0
+		path_follow.speed = 0
 	if vida == 0:
 		animated_sprite_2d.play("Dead")
 		set_physics_process(false)

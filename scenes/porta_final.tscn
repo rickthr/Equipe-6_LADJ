@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://ckcs54rhkakfb"]
+[gd_scene load_steps=0 format=3 uid="uid://ckcs54rhkakfb"]
 
 [ext_resource type="Texture2D" uid="uid://bv12m3a4ua7h7" path="res://assets/Tileset/porta.jpeg" id="1_oiwhd"]
-[ext_resource type="Script" uid="uid://bfnnpp0m4wjme" path="res://scenes/porta_final.gd" id="1_ph0rd"]
+[ext_resource type="Script" uid="uid://bfnnpp0m4wjme" path="res://scripts/porta_final.gd" id="1_ph0rd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph0rd"]
 size = Vector2(20, 24.5)
