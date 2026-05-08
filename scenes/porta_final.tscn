@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ckcs54rhkakfb"]
+
+[ext_resource type="Texture2D" uid="uid://bv12m3a4ua7h7" path="res://assets/Tileset/porta.jpeg" id="1_oiwhd"]
+[ext_resource type="Script" uid="uid://bfnnpp0m4wjme" path="res://scenes/porta_final.gd" id="1_ph0rd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph0rd"]
+size = Vector2(20, 24.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7an5"]
+size = Vector2(20, 24.5)
+
+[node name="porta_final" type="Node2D" unique_id=1452525141]
+
+[node name="bloqueador" type="StaticBody2D" parent="." unique_id=2135119524]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bloqueador" unique_id=1860192836]
+position = Vector2(2, 2.75)
+shape = SubResource("RectangleShape2D_ph0rd")
+
+[node name="porta_final" type="Area2D" parent="." unique_id=1339252617]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_ph0rd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="porta_final" unique_id=724087907]
+position = Vector2(2, 2.75)
+shape = SubResource("RectangleShape2D_c7an5")
+
+[node name="Sprite2D" type="Sprite2D" parent="porta_final" unique_id=1601587609]
+z_index = -1
+position = Vector2(1.9999998, 3)
+scale = Vector2(1.3333335, 1.6000003)
+texture = ExtResource("1_oiwhd")
+
+[connection signal="body_entered" from="porta_final" to="porta_final" method="_on_body_entered"]
+[connection signal="body_exited" from="porta_final" to="porta_final" method="_on_body_exited"]

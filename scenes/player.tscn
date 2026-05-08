@@ -265,35 +265,35 @@ region = Rect2(4000, 0, 800, 800)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vau08"]
 atlas = ExtResource("12_f1ej7")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 800, 800)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsb7e"]
 atlas = ExtResource("12_f1ej7")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(800, 0, 800, 800)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjsmb"]
 atlas = ExtResource("12_f1ej7")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(1600, 0, 800, 800)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mwp2n"]
 atlas = ExtResource("12_f1ej7")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(2400, 0, 800, 800)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0yhus"]
 atlas = ExtResource("13_oprun")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 800, 800)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jlll7"]
 atlas = ExtResource("13_oprun")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(800, 0, 800, 800)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qk6i7"]
 atlas = ExtResource("13_oprun")
-region = Rect2(32, 0, 16, 16)
+region = Rect2(1600, 0, 800, 800)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6c3st"]
 atlas = ExtResource("13_oprun")
-region = Rect2(48, 0, 16, 16)
+region = Rect2(2400, 0, 800, 800)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2dvfe"]
 animations = [{
@@ -583,7 +583,8 @@ shape = SubResource("RectangleShape2D_i3pqv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1219004222]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_2dvfe")
-animation = &"idle_lado"
+animation = &"idle_up"
+frame_progress = 0.24909607
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1852960734]
 zoom = Vector2(2.5, 2.5)

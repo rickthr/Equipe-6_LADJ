@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b4ahoc5qmyi6n"]
 
 [ext_resource type="Script" uid="uid://bqa53bffa3cev" path="res://scripts/configurções.gd" id="1_333yg"]
-[ext_resource type="Texture2D" uid="uid://cfqgp1powap4t" path="res://assets/logo/TILE777 (1).png" id="2_sfafq"]
 [ext_resource type="FontFile" uid="uid://pvlwulssamg0" path="res://assets/FONTE/Micro5-Regular.ttf" id="2_y7ytr"]
 [ext_resource type="AudioStream" uid="uid://23py0n071lu2" path="res://sound/inicio.mp3" id="3_sfafq"]
 [ext_resource type="AudioStream" uid="uid://b0uexm4hitsnt" path="res://sound/select.wav" id="4_vwhko"]
@@ -22,10 +21,10 @@ thickness = 6
 [node name="Configurções" type="Node2D" unique_id=2111161502]
 script = ExtResource("1_333yg")
 
-[node name="wallpaper" type="Sprite2D" parent="." unique_id=688655424]
-position = Vector2(570.49994, 335.99997)
-scale = Vector2(1.2890054, 0.72670156)
-texture = ExtResource("2_sfafq")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=786969428]
+offset_right = 1165.0
+offset_bottom = 654.0
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1274904219]
 offset_left = 453.0

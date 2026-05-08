@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
+
+var aguarda_diretion = "down"
 var vida = 2
 
 func tomou_dano() -> void:
@@ -12,6 +14,7 @@ func tomou_dano() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(self,"modulate", Color.RED,0.5)
 	tween.tween_property(self,"modulate", Color.WHITE,0.5)
+	await get_tree().create_timer(2.0).timeout
 	if vida == 0:
 		animated_sprite_2d.play("Dead")
 		set_physics_process(false)
@@ -51,7 +54,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	var aguarda_diretion = "down"
 	
 	if direction_y > 0:
 		aguarda_diretion = "down"

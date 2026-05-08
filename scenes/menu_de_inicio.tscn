@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c6tkjgnxo3r1d" path="res://scripts/menu_de_inicio.gd" id="1_knvo6"]
 [ext_resource type="FontFile" uid="uid://pvlwulssamg0" path="res://assets/FONTE/Micro5-Regular.ttf" id="2_dommb"]
-[ext_resource type="Texture2D" uid="uid://cfqgp1powap4t" path="res://assets/logo/TILE777 (1).png" id="2_kdnwc"]
 [ext_resource type="AudioStream" uid="uid://23py0n071lu2" path="res://sound/inicio.mp3" id="3_kdnwc"]
 [ext_resource type="AudioStream" uid="uid://b0uexm4hitsnt" path="res://sound/select.wav" id="4_vtkaq"]
 [ext_resource type="Texture2D" uid="uid://b5tvk1p4b21nc" path="res://assets/logo/Logo.png" id="6_vtkaq"]
@@ -10,10 +9,10 @@
 [node name="Menu de inicio" type="Node2D" unique_id=1096501064]
 script = ExtResource("1_knvo6")
 
-[node name="wallpaper" type="Sprite2D" parent="." unique_id=560388904]
-position = Vector2(570.49994, 335.99997)
-scale = Vector2(1.2890054, 0.72670156)
-texture = ExtResource("2_kdnwc")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=956084384]
+offset_right = 1163.0
+offset_bottom = 647.0
+color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="." unique_id=574724591]
 offset_left = 447.0
