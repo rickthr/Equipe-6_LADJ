@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cfnasxo7gbvd4"]
+[gd_scene load_steps=74 format=3 uid="uid://cfnasxo7gbvd4"]
 
 [ext_resource type="Script" uid="uid://dsh2p5w0pq7cc" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://c5jr8a3kwggqa" path="res://assets/Inimigo shits/shits/OLHO IDLE-Sheet.png" id="2_4ra3w"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://xrew3ys8v7y2" path="res://assets/Inimigo shits/shits/OLHOATAQUELADO-Sheet.png" id="4_otmr2"]
 [ext_resource type="Texture2D" uid="uid://rnhgdfcka1yi" path="res://assets/Inimigo shits/shits/OLHOATAQUECIMA-Sheet.png" id="5_wtq4b"]
 [ext_resource type="Texture2D" uid="uid://laphr0lkhsk5" path="res://assets/Inimigo shits/shits/OLHO UP-Sheet.png" id="9_j0cyh"]
+[ext_resource type="Texture2D" uid="uid://0xxq1oyo2dsm" path="res://assets/Olho_shits/OLHO RUN-Sheet.png" id="9_otmr2"]
 [ext_resource type="Script" uid="uid://6lueac3axvbe" path="res://scripts/detection_area.gd" id="11_w8i8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
@@ -189,6 +190,30 @@ region = Rect2(800, 0, 800, 800)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
 atlas = ExtResource("2_4ra3w")
 region = Rect2(1600, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w3jn"]
+atlas = ExtResource("9_otmr2")
+region = Rect2(0, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiwvf"]
+atlas = ExtResource("9_otmr2")
+region = Rect2(800, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pw1s"]
+atlas = ExtResource("9_otmr2")
+region = Rect2(1600, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5geg"]
+atlas = ExtResource("9_otmr2")
+region = Rect2(2400, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0yyi"]
+atlas = ExtResource("9_otmr2")
+region = Rect2(3200, 0, 800, 800)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5utat"]
+atlas = ExtResource("9_otmr2")
+region = Rect2(4000, 0, 800, 800)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7lhw"]
 atlas = ExtResource("9_j0cyh")
@@ -372,6 +397,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7w3jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiwvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pw1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5geg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0yyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5utat")
+}],
+"loop": true,
+"name": &"Side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_e7lhw")
 }, {
 "duration": 1.0,
@@ -402,6 +450,12 @@ size = Vector2(22, 252)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otmr2"]
 size = Vector2(29, 15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtq4b"]
+size = Vector2(29, 15.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0cyh"]
+size = Vector2(13.75, 22)
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
@@ -417,8 +471,6 @@ scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_nenq2")
 animation = &"Ataque_baixo"
 autoplay = "Idle"
-frame = 10
-frame_progress = 1.0
 
 [node name="vision" type="Area2D" parent="." groups=["Enemy"]]
 collision_layer = 4
@@ -446,12 +498,30 @@ shape = SubResource("RectangleShape2D_w8i8w")
 path_postprocessing = 1
 debug_enabled = true
 
-[node name="hitbox_attack" type="Area2D" parent="."]
+[node name="hitbox_attack_down" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_down"]
 position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_otmr2")
+
+[node name="hitbox_attack_up" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_up"]
+position = Vector2(0, -18.25)
+shape = SubResource("RectangleShape2D_wtq4b")
+
+[node name="hitbox_attack_esquerda" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_esquerda"]
+position = Vector2(-17.125, 1)
+shape = SubResource("RectangleShape2D_j0cyh")
+
+[node name="hitbox_attack_direita" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_direita"]
+position = Vector2(17, 1)
+shape = SubResource("RectangleShape2D_j0cyh")
 
 [connection signal="body_entered" from="vision" to="vision" method="_on_body_entered"]
 [connection signal="body_exited" from="vision" to="vision" method="_on_body_exited"]
