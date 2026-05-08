@@ -76,3 +76,9 @@ func _on_button_2_pressed() -> void:
 	$select.play()
 	await $select.finished
 	get_tree().change_scene_to_file("res://scenes/configurções.tscn")
+
+
+func _on_button_pressed() -> void:
+	$select.play()
+	await $select.finished
+	get_tree().change_scene_to_file("res://scenes/Prologo.tscn")
