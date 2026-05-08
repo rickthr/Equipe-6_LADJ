@@ -38,11 +38,11 @@ curve = SubResource("Curve2D_ep247")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 rotation = 1.5707964
 script = ExtResource("3_5r4tm")
-speed = 50.0
 
-[node name="Enemy" parent="Path2D/PathFollow2D" instance=ExtResource("3_2bhmo")]
+[node name="Enemy" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("target") instance=ExtResource("3_2bhmo")]
 position = Vector2(0.96008873, 0)
 rotation = -1.5703946
+target = NodePath("../../../player")
 
 [node name="vision" parent="Path2D/PathFollow2D/Enemy" index="2"]
 collision_mask = 3
@@ -94,6 +94,7 @@ texture = SubResource("CanvasTexture_3rrki")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mapa/parede3"]
 shape = SubResource("RectangleShape2D_xnm2h")
 
+[connection signal="enemy_following" from="Path2D/PathFollow2D" to="Path2D/PathFollow2D/Enemy" method="_on_path_follow_2d_enemy_following"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Enemy/vision" to="Path2D/PathFollow2D" method="_on_vision_body_entered"]
 [connection signal="body_exited" from="Path2D/PathFollow2D/Enemy/vision" to="Path2D/PathFollow2D" method="_on_vision_body_exited"]
 [connection signal="player_detected" from="Path2D/PathFollow2D/Enemy/vision" to="Path2D/PathFollow2D" method="_on_vision_player_detected"]

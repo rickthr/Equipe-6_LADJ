@@ -1,27 +1,32 @@
+# vision.gd (Area2D)
 extends Area2D
-@onready var raycast = $RayCast2D
-@onready var default_target_position: Vector2 = raycast.target_position
 
-signal player_detected(body: Node2D, detected: bool)
+@onready var raycast: RayCast2D = $RayCast2D
 
-func _is_detected(player):
-	raycast.target_position = raycast.to_local(player.global_position)
+signal player_detected(body: Node2D)
+
+var player_inside: Node2D = null
+var is_detected: bool = false
+
+func _physics_process(delta: float) -> void:
+	if player_inside == null:
+		is_detected = false
+		return
+	raycast.target_position = raycast.to_local(player_inside.global_position)
 	raycast.force_raycast_update()
 	
-	var collider = raycast.get_collider()
-	
-	if collider and collider.is_in_group("Player"):
-		return true
-	return false
+	if raycast.get_collider() == player_inside:
+		if not is_detected:
+			is_detected = true
+			player_detected.emit(player_inside)
+		else:
+			is_detected = false
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and _is_detected(body) == true:
-		player_detected.emit(body, true)
-		
+	if body.is_in_group("Player"):
+		player_inside = body
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		raycast.target_position = default_target_position
-		raycast.force_raycast_update()
-		
-		player_detected.emit(body, false)
+		player_inside = null
+		is_detected = false

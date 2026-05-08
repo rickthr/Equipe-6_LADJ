@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cfnasxo7gbvd4"]
+[gd_scene load_steps=64 format=3 uid="uid://cfnasxo7gbvd4"]
 
 [ext_resource type="Script" uid="uid://dsh2p5w0pq7cc" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://c5jr8a3kwggqa" path="res://assets/Inimigo shits/shits/OLHO IDLE-Sheet.png" id="2_4ra3w"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://xrew3ys8v7y2" path="res://assets/Inimigo shits/shits/OLHOATAQUELADO-Sheet.png" id="4_otmr2"]
 [ext_resource type="Texture2D" uid="uid://rnhgdfcka1yi" path="res://assets/Inimigo shits/shits/OLHOATAQUECIMA-Sheet.png" id="5_wtq4b"]
 [ext_resource type="Texture2D" uid="uid://laphr0lkhsk5" path="res://assets/Inimigo shits/shits/OLHO UP-Sheet.png" id="9_j0cyh"]
+[ext_resource type="Script" uid="uid://6lueac3axvbe" path="res://scripts/detection_area.gd" id="11_w8i8w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1x4g4"]
 atlas = ExtResource("2_8qclf")
@@ -393,50 +394,60 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
 size = Vector2(35, 35)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p1mj"]
-size = Vector2(20, 154)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1291523917]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qclf"]
+radius = 139.05754
+
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_7p1mj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=266343907]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_nenq2")
-animation = &"Dead"
+animation = &"Down"
 autoplay = "Idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1302325791]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_7xaro")
 
-[node name="vision" type="Area2D" parent="." unique_id=331215564 groups=["Enemy"]]
+[node name="vision" type="Area2D" parent="." groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("2_md0e3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vision" unique_id=891174363]
-position = Vector2(0, 67)
-shape = SubResource("RectangleShape2D_7p1mj")
-debug_color = Color(0, 0.6340109, 0.43756983, 0.41960785)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision"]
+polygon = PackedVector2Array(0, 0, -35, 44, -23, 54, -9, 58, 9, 58, 23, 54, 35, 44)
 
-[node name="RayCast2D" type="RayCast2D" parent="vision" unique_id=1831470308]
-target_position = Vector2(0, 144)
+[node name="RayCast2D" type="RayCast2D" parent="vision"]
+target_position = Vector2(0, 57)
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=228959738]
+[node name="hitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=730149489]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 scale = Vector2(1.07, 1.07)
 shape = SubResource("RectangleShape2D_md0e3")
 debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
 
-[node name="Timer" type="Timer" parent="." unique_id=2078706676]
+[node name="detection_area" type="Area2D" parent="."]
+script = ExtResource("11_w8i8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_8qclf")
+
+[node name="nav_timer" type="Timer" parent="."]
+
+[node name="nav_agent" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
 
 [connection signal="body_entered" from="vision" to="vision" method="_on_body_entered"]
 [connection signal="body_exited" from="vision" to="vision" method="_on_body_exited"]
 [connection signal="player_detected" from="vision" to="." method="_on_vision_player_detected"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_exited" from="detection_area" to="detection_area" method="_on_body_exited"]
+[connection signal="player_lost" from="detection_area" to="." method="_on_detection_area_player_lost"]
+[connection signal="timeout" from="nav_timer" to="." method="_on_nav_timer_timeout"]

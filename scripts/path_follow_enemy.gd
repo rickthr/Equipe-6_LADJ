@@ -1,23 +1,21 @@
 extends PathFollow2D
 
-@export var speed: float = 30
+@export var speed: float = 50
+var state = "patrol"
 
-@export var state = "patrol"
-
-var bodies_detected = []
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if state == "patrol":
-		progress += delta * speed 
+		progress += delta * speed
 
+func _on_vision_player_detected(body: Node2D) -> void:
+	state = "following"
 
-func _on_vision_player_detected(body: Node2D, detected: bool) -> void:
-	if detected:
-		state = "following"
-		bodies_detected.append(body)
-	elif bodies_detected.size() > 0:
-		bodies_detected.erase(body)
-	if bodies_detected.size() <= 0:
-		state = "patrol"
-	
+func _on_detection_area_player_lost() -> void:
+	_iniciar_retorno()
+
+func _iniciar_retorno():
+	await get_tree().create_timer(3.0).timeout
+	state = "returning"
+
+func retomar_patrol():
+	state = "patrol"
