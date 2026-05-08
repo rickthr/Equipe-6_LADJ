@@ -14,4 +14,5 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	Global.chave = true
 	print(Global.chave)
+	$select_chave.play()
 	$Area2D/Sprite2D.visible = false
