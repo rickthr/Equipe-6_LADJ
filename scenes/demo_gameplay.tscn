@@ -1252,14 +1252,26 @@ curve = SubResource("Curve2D_db381")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Cenário/Path2D"]
 position = Vector2(96.666664, 0)
+rotates = false
 script = ExtResource("5_db381")
 
 [node name="Enemy" parent="Cenário/Path2D/PathFollow2D" instance=ExtResource("5_87qq5")]
-rotation = -1.5707964
 
-[node name="nav_agent" parent="Cenário/Path2D/PathFollow2D/Enemy" index="6"]
+[node name="AnimatedSprite2D" parent="Cenário/Path2D/PathFollow2D/Enemy" index="1"]
+animation = &"Ataque_up"
+
+[node name="nav_agent" parent="Cenário/Path2D/PathFollow2D/Enemy" index="5"]
 avoidance_layers = 0
 avoidance_mask = 0
+
+[node name="hitbox_attack_up" parent="Cenário/Path2D/PathFollow2D/Enemy" index="7"]
+collision_layer = 0
+
+[node name="hitbox_attack_direita" parent="Cenário/Path2D/PathFollow2D/Enemy" index="8"]
+collision_layer = 0
+
+[node name="hitbox_attack_esquerda" parent="Cenário/Path2D/PathFollow2D/Enemy" index="9"]
+collision_layer = 0
 
 [node name="player" parent="." instance=ExtResource("5_0y56r")]
 position = Vector2(6.999999, 0)

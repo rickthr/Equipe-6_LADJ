@@ -20,3 +20,8 @@ func _iniciar_retorno():
 func retomar_patrol():
 	state = "patrol"
 	print("voltou a patrol")
+
+func get_forward_direction() -> Vector2:
+	var curve = get_parent().curve
+	var forward = curve.sample_baked_with_rotation(progress, true).basis_xform(Vector2.RIGHT)
+	return forward.normalized()
