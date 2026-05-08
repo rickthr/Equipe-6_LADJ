@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b4ahoc5qmyi6n"]
 
 [ext_resource type="Script" uid="uid://bqa53bffa3cev" path="res://scripts/configurções.gd" id="1_333yg"]
+[ext_resource type="Texture2D" uid="uid://cfqgp1powap4t" path="res://assets/logo/TILE777 (1).png" id="2_sfafq"]
 [ext_resource type="FontFile" uid="uid://pvlwulssamg0" path="res://assets/FONTE/Micro5-Regular.ttf" id="2_y7ytr"]
 [ext_resource type="AudioStream" uid="uid://23py0n071lu2" path="res://sound/inicio.mp3" id="3_sfafq"]
 [ext_resource type="AudioStream" uid="uid://b0uexm4hitsnt" path="res://sound/select.wav" id="4_vwhko"]
@@ -21,11 +22,10 @@ thickness = 6
 [node name="Configurções" type="Node2D" unique_id=2111161502]
 script = ExtResource("1_333yg")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1744825726]
-offset_left = 4.0
-offset_right = 1160.0
-offset_bottom = 654.0
-color = Color(0, 0, 0, 1)
+[node name="wallpaper" type="Sprite2D" parent="." unique_id=688655424]
+position = Vector2(570.49994, 335.99997)
+scale = Vector2(1.2890054, 0.72670156)
+texture = ExtResource("2_sfafq")
 
 [node name="Label" type="Label" parent="." unique_id=1274904219]
 offset_left = 453.0
@@ -33,57 +33,82 @@ offset_top = 41.0
 offset_right = 594.0
 offset_bottom = 109.0
 theme_override_fonts/font = ExtResource("2_y7ytr")
-theme_override_font_sizes/font_size = 61
+theme_override_font_sizes/font_size = 80
 text = "controles"
 
 [node name="Label2" type="Label" parent="." unique_id=1325117353]
-offset_left = 183.0
-offset_top = 155.0
-offset_right = 374.0
-offset_bottom = 218.0
-text = "w|seta cima: andar para cima"
+offset_left = 80.0
+offset_top = 160.0
+offset_right = 361.0
+offset_bottom = 191.0
+theme_override_fonts/font = ExtResource("2_y7ytr")
+theme_override_font_sizes/font_size = 30
+text = "W|Seta cima: Andar para cima"
 
 [node name="Label3" type="Label" parent="." unique_id=2010762821]
-offset_left = 447.0
-offset_top = 155.0
-offset_right = 683.0
-offset_bottom = 252.0
-text = "s|seta baixo: andar para baixo"
+offset_left = 404.0
+offset_top = 160.0
+offset_right = 690.0
+offset_bottom = 191.0
+theme_override_fonts/font = ExtResource("2_y7ytr")
+theme_override_font_sizes/font_size = 30
+text = "S|Seta baixo: Andar para baixo"
 
 [node name="Label4" type="Label" parent="." unique_id=152991169]
-offset_left = 711.0
-offset_top = 155.0
-offset_right = 1009.0
-offset_bottom = 252.0
-text = "a|seta esquerda: andar para esquerda"
+offset_left = 761.0
+offset_top = 160.0
+offset_right = 1118.0
+offset_bottom = 191.0
+theme_override_fonts/font = ExtResource("2_y7ytr")
+theme_override_font_sizes/font_size = 30
+text = "A|Seta esquerda: Andar para esquerda"
 
 [node name="Label5" type="Label" parent="." unique_id=1044176608]
-offset_left = 271.0
-offset_top = 217.0
-offset_right = 569.0
-offset_bottom = 314.0
-text = "d|seta direita: andar para direita"
+offset_left = 165.0
+offset_top = 240.0
+offset_right = 473.0
+offset_bottom = 271.0
+theme_override_fonts/font = ExtResource("2_y7ytr")
+theme_override_font_sizes/font_size = 30
+text = "D|Seta direita: Andar para direita"
+
+[node name="Label5" type="Label" parent="Label5" unique_id=413543101]
+layout_mode = 0
+offset_left = 612.0
+offset_top = -2.0
+offset_right = 737.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("2_y7ytr")
+theme_override_font_sizes/font_size = 30
+text = "G: Abrir porta
+"
 
 [node name="Label6" type="Label" parent="." unique_id=1343272472]
-offset_left = 566.0
-offset_top = 219.0
-offset_right = 864.0
-offset_bottom = 316.0
-text = "e: ataque"
+offset_left = 541.0
+offset_top = 240.0
+offset_right = 642.0
+offset_bottom = 271.0
+theme_override_fonts/font = ExtResource("2_y7ytr")
+theme_override_font_sizes/font_size = 30
+text = "E: Ataque"
 
 [node name="Label6" type="Label" parent="Label6" unique_id=857567257]
 layout_mode = 0
-offset_left = 105.0
-offset_top = 149.0
-offset_right = 215.0
-offset_bottom = 185.0
+offset_left = 191.0
+offset_top = 178.0
+offset_right = 486.0
+offset_bottom = 239.0
+theme_override_fonts/font = ExtResource("2_y7ytr")
+theme_override_font_sizes/font_size = 60
 text = "efeitos sonoros"
 
 [node name="Label7" type="Label" parent="." unique_id=2024077344]
-offset_left = 193.0
-offset_top = 375.0
-offset_right = 290.0
-offset_bottom = 410.0
+offset_left = 209.0
+offset_top = 413.0
+offset_right = 340.0
+offset_bottom = 474.0
+theme_override_fonts/font = ExtResource("2_y7ytr")
+theme_override_font_sizes/font_size = 60
 text = "Música"
 
 [node name="Button" type="Button" parent="." unique_id=1600746764]
@@ -106,10 +131,10 @@ stream = ExtResource("4_vwhko")
 bus = &"efeitos sonoros"
 
 [node name="controle_musica" type="HSlider" parent="." unique_id=1663800291]
-offset_left = 142.0
-offset_top = 421.0
-offset_right = 356.0
-offset_bottom = 466.0
+offset_left = 123.0
+offset_top = 483.0
+offset_right = 450.0
+offset_bottom = 555.0
 theme_override_styles/slider = SubResource("StyleBoxLine_p1llx")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_ktkbd")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_ovdr2")
@@ -120,10 +145,10 @@ script = ExtResource("5_aiflk")
 audio_bus_name = "music"
 
 [node name="controle_sfx" type="HSlider" parent="." unique_id=706491586]
-offset_left = 620.0
-offset_top = 423.0
-offset_right = 834.0
-offset_bottom = 468.0
+offset_left = 702.0
+offset_top = 483.0
+offset_right = 1029.0
+offset_bottom = 555.0
 theme_override_styles/slider = SubResource("StyleBoxLine_p1llx")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_ktkbd")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_ovdr2")

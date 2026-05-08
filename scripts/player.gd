@@ -32,7 +32,9 @@ func checar_dano(area:Area2D):
 	for body  in area.get_overlapping_bodies():
 		if body.is_in_group("Inimigo"):
 			body.emit_signal("inimigo_morrer")
-			
+
+func _ready() -> void:
+	add_to_group("Player")
 func _physics_process(delta: float) -> void:
 	
 	var direction_x := Input.get_axis("ui_left", "ui_right")

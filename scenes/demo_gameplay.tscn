@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://co33v6dkcqefn"]
+[gd_scene format=4 uid="uid://co33v6dkcqefn"]
 
 [ext_resource type="Texture2D" uid="uid://db41i0w0we8iy" path="res://assets/Tileset/primeiro_chao.png" id="1_nq57v"]
 [ext_resource type="Texture2D" uid="uid://bmyk4uqsjug7k" path="res://assets/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/Interior/TilesetInterior.png" id="2_87qq5"]

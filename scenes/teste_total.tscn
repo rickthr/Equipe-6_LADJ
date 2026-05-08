@@ -1,18 +1,22 @@
-[gd_scene load_steps=0 format=3 uid="uid://yt70v8ab8e4q"]
+[gd_scene format=3 uid="uid://yt70v8ab8e4q"]
 
 [ext_resource type="PackedScene" uid="uid://3ot2uk2utlme" path="res://scenes/player.tscn" id="1_j275j"]
+[ext_resource type="PackedScene" uid="uid://csjjxd0iewipb" path="res://scenes/porta.tscn" id="2_1qqus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qyen"]
 size = Vector2(62, 49)
 
 [node name="teste_total" type="Node2D" unique_id=789745206]
 
-[node name="player" parent="." unique_id=2146880530 instance=ExtResource("1_j275j")]
-
 [node name="morte" type="Area2D" parent="." unique_id=1691052305]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="morte" unique_id=1051280320]
 position = Vector2(113, 24)
 shape = SubResource("RectangleShape2D_5qyen")
+
+[node name="porta" parent="." unique_id=907956075 instance=ExtResource("2_1qqus")]
+position = Vector2(13, 56)
+
+[node name="player" parent="." unique_id=2146880530 instance=ExtResource("1_j275j")]
 
 [connection signal="body_entered" from="morte" to="player" method="_on_morte_body_entered"]

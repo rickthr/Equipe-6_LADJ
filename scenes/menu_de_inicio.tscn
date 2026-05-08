@@ -2,48 +2,42 @@
 
 [ext_resource type="Script" uid="uid://c6tkjgnxo3r1d" path="res://scripts/menu_de_inicio.gd" id="1_knvo6"]
 [ext_resource type="FontFile" uid="uid://pvlwulssamg0" path="res://assets/FONTE/Micro5-Regular.ttf" id="2_dommb"]
+[ext_resource type="Texture2D" uid="uid://cfqgp1powap4t" path="res://assets/logo/TILE777 (1).png" id="2_kdnwc"]
 [ext_resource type="AudioStream" uid="uid://23py0n071lu2" path="res://sound/inicio.mp3" id="3_kdnwc"]
 [ext_resource type="AudioStream" uid="uid://b0uexm4hitsnt" path="res://sound/select.wav" id="4_vtkaq"]
+[ext_resource type="Texture2D" uid="uid://b5tvk1p4b21nc" path="res://assets/logo/Logo.png" id="6_vtkaq"]
 
 [node name="Menu de inicio" type="Node2D" unique_id=1096501064]
 script = ExtResource("1_knvo6")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1138784867]
-offset_right = 1156.0
-offset_bottom = 647.0
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="." unique_id=1110440167]
-offset_left = 438.0
-offset_top = 80.0
-offset_right = 708.0
-offset_bottom = 141.0
-theme_override_font_sizes/font_size = 44
-text = "Logo do jogo"
+[node name="wallpaper" type="Sprite2D" parent="." unique_id=560388904]
+position = Vector2(570.49994, 335.99997)
+scale = Vector2(1.2890054, 0.72670156)
+texture = ExtResource("2_kdnwc")
 
 [node name="Button" type="Button" parent="." unique_id=574724591]
 offset_left = 447.0
-offset_top = 246.0
+offset_top = 255.0
 offset_right = 713.0
-offset_bottom = 345.0
+offset_bottom = 354.0
 theme_override_fonts/font = ExtResource("2_dommb")
 theme_override_font_sizes/font_size = 70
 text = "JOGAR"
 
 [node name="Button2" type="Button" parent="." unique_id=1379924863]
 offset_left = 401.0
-offset_top = 337.0
+offset_top = 374.0
 offset_right = 783.0
-offset_bottom = 436.0
+offset_bottom = 473.0
 theme_override_fonts/font = ExtResource("2_dommb")
 theme_override_font_sizes/font_size = 70
 text = "CONFIGURAÇÕES"
 
 [node name="Button3" type="Button" parent="." unique_id=585931678]
 offset_left = 456.0
-offset_top = 442.0
+offset_top = 513.0
 offset_right = 722.0
-offset_bottom = 541.0
+offset_bottom = 612.0
 theme_override_fonts/font = ExtResource("2_dommb")
 theme_override_font_sizes/font_size = 70
 text = "SAIR"
@@ -57,6 +51,11 @@ parameters/looping = true
 [node name="select" type="AudioStreamPlayer2D" parent="." unique_id=809480096]
 stream = ExtResource("4_vtkaq")
 bus = &"efeitos sonoros"
+
+[node name="logo" type="Sprite2D" parent="." unique_id=1040014133]
+position = Vector2(573.00006, 129.00002)
+scale = Vector2(0.1649033, 0.17848793)
+texture = ExtResource("6_vtkaq")
 
 [connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
 [connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]
