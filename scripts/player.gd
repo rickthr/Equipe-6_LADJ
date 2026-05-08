@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 
-var vida = 10
+var vida = 3
 
 func tomou_dano() -> void:
 	vida -= 1
