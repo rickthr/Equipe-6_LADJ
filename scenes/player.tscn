@@ -589,8 +589,8 @@ frame_progress = 0.24909607
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1852960734]
 zoom = Vector2(2.5, 2.5)
 limit_left = -518
-limit_top = -354
-limit_right = 570
+limit_top = -690
+limit_right = 970
 limit_bottom = 294
 
 [node name="Dar_dano_cima" type="Area2D" parent="." unique_id=1640135041]
