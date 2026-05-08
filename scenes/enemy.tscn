@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cfnasxo7gbvd4"]
+[gd_scene load_steps=65 format=3 uid="uid://cfnasxo7gbvd4"]
 
 [ext_resource type="Script" uid="uid://dsh2p5w0pq7cc" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://c5jr8a3kwggqa" path="res://assets/Inimigo shits/shits/OLHO IDLE-Sheet.png" id="2_4ra3w"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://rnhgdfcka1yi" path="res://assets/Inimigo shits/shits/OLHOATAQUECIMA-Sheet.png" id="5_wtq4b"]
 [ext_resource type="Texture2D" uid="uid://laphr0lkhsk5" path="res://assets/Inimigo shits/shits/OLHO UP-Sheet.png" id="9_j0cyh"]
 [ext_resource type="Script" uid="uid://6lueac3axvbe" path="res://scripts/detection_area.gd" id="11_w8i8w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1x4g4"]
 atlas = ExtResource("2_8qclf")
@@ -391,47 +393,42 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
-size = Vector2(35, 35)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_8qclf"]
 radius = 139.05754
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8i8w"]
+size = Vector2(22, 252)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otmr2"]
+size = Vector2(29, 15)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_7p1mj")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.07, 1.07)
+shape = SubResource("RectangleShape2D_md0e3")
+debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_nenq2")
-animation = &"Down"
+animation = &"Ataque_baixo"
 autoplay = "Idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1.5)
-shape = SubResource("RectangleShape2D_7xaro")
+frame = 10
+frame_progress = 1.0
 
 [node name="vision" type="Area2D" parent="." groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("2_md0e3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision"]
-polygon = PackedVector2Array(0, 0, -35, 44, -23, 54, -9, 58, 9, 58, 23, 54, 35, 44)
+polygon = PackedVector2Array(0, 0, -38, 85, -23, 95, -9, 99, 9, 99, 23, 95, 34, 85)
 
 [node name="RayCast2D" type="RayCast2D" parent="vision"]
 target_position = Vector2(0, 57)
-
-[node name="hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-scale = Vector2(1.07, 1.07)
-shape = SubResource("RectangleShape2D_md0e3")
-debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
 
 [node name="detection_area" type="Area2D" parent="."]
 script = ExtResource("11_w8i8w")
@@ -439,11 +436,22 @@ script = ExtResource("11_w8i8w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_8qclf")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(0, 116)
+shape = SubResource("RectangleShape2D_w8i8w")
+
 [node name="nav_timer" type="Timer" parent="."]
 
 [node name="nav_agent" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
 debug_enabled = true
+
+[node name="hitbox_attack" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_otmr2")
 
 [connection signal="body_entered" from="vision" to="vision" method="_on_body_entered"]
 [connection signal="body_exited" from="vision" to="vision" method="_on_body_exited"]

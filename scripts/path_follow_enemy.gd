@@ -14,8 +14,9 @@ func _on_detection_area_player_lost() -> void:
 	_iniciar_retorno()
 
 func _iniciar_retorno():
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.25).timeout
 	state = "returning"
 
 func retomar_patrol():
 	state = "patrol"
+	print("voltou a patrol")
