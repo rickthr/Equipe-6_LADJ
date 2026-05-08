@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 		for shape in bloqueador.get_children():
 			if shape is CollisionShape2D:
 				shape.set_deferred("disabled", true)
+				queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
 	print("alguem entrou")

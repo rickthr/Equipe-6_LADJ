@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddiumbn48sp3o"]
+[gd_scene format=3 uid="uid://ddiumbn48sp3o"]
 
 [ext_resource type="Script" uid="uid://d0v1gio3nlm36" path="res://node_2d.gd" id="1_dad0a"]
 [ext_resource type="FontFile" uid="uid://pvlwulssamg0" path="res://assets/FONTE/Micro5-Regular.ttf" id="2_h78hj"]
