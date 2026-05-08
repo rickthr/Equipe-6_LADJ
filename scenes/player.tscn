@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://3ot2uk2utlme"]
+[gd_scene format=3 uid="uid://3ot2uk2utlme"]
 
 [ext_resource type="Script" uid="uid://b08dkpcg618h" path="res://scripts/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://lb1350dmxrlp" path="res://assets/Ninja Shit/NinjinATAQUEbaixo1-Sheet.png" id="2_d2wvv"]
@@ -572,60 +572,60 @@ size = Vector2(20, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ej7"]
 size = Vector2(20, 23)
 
-[node name="player" type="CharacterBody2D" groups=["Player"]]
+[node name="player" type="CharacterBody2D" unique_id=966473635 groups=["Player"]]
 collision_mask = 6
 script = ExtResource("1_4flbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=530119026]
 position = Vector2(-1.5, 2)
 shape = SubResource("RectangleShape2D_i3pqv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2102522336]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_2dvfe")
 animation = &"idle_up"
 frame_progress = 0.24909607
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1784532858]
 zoom = Vector2(3.5, 3.5)
 limit_left = -518
 limit_top = -690
 limit_right = 970
 limit_bottom = 294
 
-[node name="Dar_dano_cima" type="Area2D" parent="."]
+[node name="Dar_dano_cima" type="Area2D" parent="." unique_id=304125141]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dar_dano_cima"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dar_dano_cima" unique_id=842845831]
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_d2wvv")
 debug_color = Color(0.71450216, 0.2584428, 1, 0.41960785)
 
-[node name="Dar_dano_down" type="Area2D" parent="."]
+[node name="Dar_dano_down" type="Area2D" parent="." unique_id=985683]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dar_dano_down"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dar_dano_down" unique_id=1301899305]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_3v2ag")
 debug_color = Color(0.6025803, 0.5427714, 0, 0.41960785)
 
-[node name="Dar_dano_lado" type="Area2D" parent="."]
+[node name="Dar_dano_lado" type="Area2D" parent="." unique_id=302409663]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dar_dano_lado"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dar_dano_lado" unique_id=473300148]
 position = Vector2(12, -0.5)
 shape = SubResource("RectangleShape2D_jej6c")
 debug_color = Color(0, 0.6490454, 0.17056534, 0.41960785)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Dar_dano_lado"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Dar_dano_lado" unique_id=2049281603]
 position = Vector2(-16, 0)
 shape = SubResource("RectangleShape2D_f1ej7")
 debug_color = Color(0.99400204, 0, 0.23606637, 0.41960785)
 
-[node name="katana" type="AudioStreamPlayer2D" parent="."]
+[node name="katana" type="AudioStreamPlayer2D" parent="." unique_id=68852243]
 stream = ExtResource("12_3v2ag")
 bus = &"efeitos sonoros"
 
-[node name="hit" type="AudioStreamPlayer2D" parent="."]
+[node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=1897185898]
 stream = ExtResource("13_jej6c")
 bus = &"efeitos sonoros"

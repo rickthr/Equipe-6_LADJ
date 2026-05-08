@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cwk5tecolwlur"]
+
+[ext_resource type="Texture2D" uid="uid://d0k38usmohtb2" path="res://assets/Tileset/mascara .png" id="1_6018e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s56q0"]
+size = Vector2(44, 41.5)
+
+[node name="mascara" type="Node2D" unique_id=2029819290]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1440609823]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1644203650]
+position = Vector2(1, -1.75)
+shape = SubResource("RectangleShape2D_s56q0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=258977852]
+position = Vector2(2, -1)
+scale = Vector2(0.08134096, 0.07605562)
+texture = ExtResource("1_6018e")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cfnasxo7gbvd4"]
+[gd_scene format=3 uid="uid://cfnasxo7gbvd4"]
 
 [ext_resource type="Script" uid="uid://dsh2p5w0pq7cc" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://c5jr8a3kwggqa" path="res://assets/Inimigo shits/shits/OLHO IDLE-Sheet.png" id="2_4ra3w"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://laphr0lkhsk5" path="res://assets/Inimigo shits/shits/OLHO UP-Sheet.png" id="9_j0cyh"]
 [ext_resource type="Texture2D" uid="uid://0xxq1oyo2dsm" path="res://assets/Olho_shits/OLHO RUN-Sheet.png" id="9_otmr2"]
 [ext_resource type="Script" uid="uid://6lueac3axvbe" path="res://scripts/detection_area.gd" id="11_w8i8w"]
+[ext_resource type="AudioStream" uid="uid://dubqvrmcn6cnu" path="res://sound/katana.mp3" id="13_wtq4b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 
@@ -456,72 +457,76 @@ size = Vector2(29, 15.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0cyh"]
 size = Vector2(13.75, 22)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" unique_id=1126859725]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_7p1mj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=82456513]
 scale = Vector2(1.07, 1.07)
 shape = SubResource("RectangleShape2D_md0e3")
 debug_color = Color(0.6513736, 0.5195613, 0, 0.41960785)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1358953301]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_nenq2")
 animation = &"Ataque_baixo"
 autoplay = "Idle"
 
-[node name="vision" type="Area2D" parent="." groups=["Enemy"]]
+[node name="vision" type="Area2D" parent="." unique_id=2033027231 groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("2_md0e3")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision" unique_id=1953076967]
 polygon = PackedVector2Array(0, 0, -38, 85, -23, 95, -9, 99, 9, 99, 23, 95, 34, 85)
 
-[node name="RayCast2D" type="RayCast2D" parent="vision"]
+[node name="RayCast2D" type="RayCast2D" parent="vision" unique_id=1262929407]
 target_position = Vector2(0, 57)
 
-[node name="detection_area" type="Area2D" parent="."]
+[node name="detection_area" type="Area2D" parent="." unique_id=354191849]
 script = ExtResource("11_w8i8w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=1346074722]
 shape = SubResource("CircleShape2D_8qclf")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="detection_area"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="detection_area" unique_id=1386349797]
 position = Vector2(0, 116)
 shape = SubResource("RectangleShape2D_w8i8w")
 
-[node name="nav_timer" type="Timer" parent="."]
+[node name="nav_timer" type="Timer" parent="." unique_id=1692766647]
 
-[node name="nav_agent" type="NavigationAgent2D" parent="."]
+[node name="nav_agent" type="NavigationAgent2D" parent="." unique_id=799101707]
 path_postprocessing = 1
 debug_enabled = true
 
-[node name="hitbox_attack_down" type="Area2D" parent="."]
+[node name="hitbox_attack_down" type="Area2D" parent="." unique_id=1369712370]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_down"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_down" unique_id=517804135]
 position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_otmr2")
 
-[node name="hitbox_attack_up" type="Area2D" parent="."]
+[node name="hitbox_attack_up" type="Area2D" parent="." unique_id=1022069359]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_up"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_up" unique_id=906080197]
 position = Vector2(0, -18.25)
 shape = SubResource("RectangleShape2D_wtq4b")
 
-[node name="hitbox_attack_esquerda" type="Area2D" parent="."]
+[node name="hitbox_attack_esquerda" type="Area2D" parent="." unique_id=603016691]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_esquerda"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_esquerda" unique_id=518372772]
 position = Vector2(-17.125, 1)
 shape = SubResource("RectangleShape2D_j0cyh")
 
-[node name="hitbox_attack_direita" type="Area2D" parent="."]
+[node name="hitbox_attack_direita" type="Area2D" parent="." unique_id=481028651]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_direita"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_attack_direita" unique_id=37672658]
 position = Vector2(17, 1)
 shape = SubResource("RectangleShape2D_j0cyh")
+
+[node name="katana" type="AudioStreamPlayer2D" parent="." unique_id=814771864]
+stream = ExtResource("13_wtq4b")
+bus = &"efeitos sonoros"
 
 [connection signal="body_entered" from="vision" to="vision" method="_on_body_entered"]
 [connection signal="body_exited" from="vision" to="vision" method="_on_body_exited"]

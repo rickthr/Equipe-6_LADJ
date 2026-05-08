@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bv12m3a4ua7h7" path="res://assets/Tileset/porta.jpeg" id="2_hlcnn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwxfp"]
-size = Vector2(20, 27)
+size = Vector2(23, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlcnn"]
-size = Vector2(22, 27)
+size = Vector2(27, 31)
 
 [node name="porta" type="Node2D" unique_id=907956075]
 
@@ -16,7 +16,7 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bloqueador" unique_id=1702471318]
-position = Vector2(2, 0.5)
+position = Vector2(1.5, 0.5)
 shape = SubResource("RectangleShape2D_rwxfp")
 
 [node name="porta" type="Area2D" parent="." unique_id=376907131]
@@ -26,7 +26,7 @@ script = ExtResource("1_fctyj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="porta" unique_id=1085371569]
 z_index = 1
-position = Vector2(2, 0.5)
+position = Vector2(1.5, 0.5)
 shape = SubResource("RectangleShape2D_hlcnn")
 
 [node name="Sprite2D" type="Sprite2D" parent="porta" unique_id=1595678607]

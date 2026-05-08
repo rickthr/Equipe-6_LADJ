@@ -132,16 +132,20 @@ func attack():
 	
 	var hitbox_atual: Area2D
 	if facing_direction == Vector2.DOWN:
+		$katana.play()
 		animated_sprite_2d.play("Ataque_baixo")
 		hitbox_atual = hitbox_down
 	elif facing_direction == Vector2.UP:
+		$katana.play()
 		animated_sprite_2d.play("Ataque_up")
 		hitbox_atual = hitbox_up
 	elif facing_direction == Vector2.RIGHT:
+		$katana.play()
 		animated_sprite_2d.play("Ataque_lado")
 		animated_sprite_2d.flip_h = false
 		hitbox_atual = hitbox_direita
 	else:
+		$katana.play()
 		animated_sprite_2d.play("Ataque_lado")
 		animated_sprite_2d.flip_h = true
 		hitbox_atual = hitbox_esquerda
@@ -168,6 +172,9 @@ func attack():
 
 func morrer():
 	vida -= 1
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"modulate", Color.RED,0.5)
+	tween.tween_property(self,"modulate", Color.WHITE,0.5)
 	print(vida)
 	if path_follow != null and path_follow.state == "patrol":
 		vida = 0
